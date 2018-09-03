@@ -3,17 +3,17 @@ import React from 'react';
 class SearchRecipes extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.handleSearch = this.handleSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSearch = (event) => {
+  handleSearch = event => {
     event.preventDefault();
     this.props.onChange(event.target[0].value);
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.props.onChange(event.target.value);
   }
 
