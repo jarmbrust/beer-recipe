@@ -6,9 +6,9 @@ class Ingredents extends React.Component {
     this.handleChecked = this.handleChecked.bind(this);
   }
 
-  handleChecked(e) {
-    console.log('e.target', e.target);
-    this.props.onChecked(e.target.value)
+  handleChecked = event => {
+    console.log('event.target', event.target);
+    this.props.onChecked(event.target.value)
   }
 
   render() {

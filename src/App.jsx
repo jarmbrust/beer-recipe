@@ -27,28 +27,25 @@ class App extends Component {
 
     this.handleCheckedBox = this.handleCheckedBox.bind(this);
   //  this.searchRecipes = this.searchRecipes.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearchRecipes = this.handleSearchRecipes.bind(this);
+    this.getSearchResults = this.getSearchResults.bind(this);
   }
 
   handleCheckedBox(checked) {
-    console.log('checked', checked);
     let recipeCopy = {...this.state.recipes}
-    console.log('this.recipes.newlist', recipeCopy, recipeCopy.newList, this.state.recipes.newList);
     recipeCopy.newList.push(checked);
     this.setState({recipes: recipeCopy});
-
-    console.log('this.recipes.newlist', recipeCopy);
-    console.log('this.state', this.state);
   }
 
-//   searchRecipes(recipe) {
-//  //   Object.keys(this.state.recipes, recipe) {
-//       return Object.keys(this.state.recipes).find(key => this.state.recipes[key] === recipe);
-//  //   }
-//   }
+  handleSearchRecipes = value => {
+    console.log('value', value, this.state.recipes, Object.keys(this.state.recipes));
 
-  handleSearch = value => {
-    console.log('value', value);
+    const result = this.getSearchResults(this.state.recipes, value);
+    console.log('test', result);
+  }
+
+  getSearchResults(object, value) {
+    return Object.keys(object).find(key => key === value);
   }
 
   render() {
@@ -63,10 +60,13 @@ class App extends Component {
             ingredents={this.state.ingredients}
             onChecked={this.handleCheckedBox}
           />
+        </div>
+        <div>
           <SearchRecipes
             recipes={this.state.recipeSearch}
-            onChange={this.handleSearch}
+            onChange={this.handleSearchRecipes}
           />
+
         </div>
       </div>
     );
