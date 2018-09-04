@@ -10,15 +10,15 @@ class App extends Component {
     super(props);
 
     this.state = {
-      ingredients: {
-        'Water': { checked: false },
-        'Hop Pellets': { checked: false },
-        'Barley': { checked: false },
-        'Extract': { checked: false },
-        'Yeast': { checked: false },
-        'Corn Syrup': { checked: false },
-        'Iodine Solution': { checked: false }
-      },
+      ingredents: [
+        'Water',
+        'Hop Pellets',
+        'Barley',
+        'Extract',
+        'Yeast',
+        'Corn Syrup',
+        'Iodine Solution'
+      ],
       recipes: {
         recipe1: ['Water', 'Hop Pellets', 'Yeast'],
         coolRecipe: ['Water', 'Extract', 'Yeast', 'Corn Syrup'],
@@ -77,9 +77,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Beer Recipe Organizer</h1>
         </header>
-        <div className="ingredients-list">
+        <div className="ingredents-list">
           <Ingredents 
-            ingredents={this.state.ingredients}
+            ingredents={this.state.ingredents}
             onChecked={this.handleCheckedBox}
           />
         </div>

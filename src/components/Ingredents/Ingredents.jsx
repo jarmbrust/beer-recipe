@@ -14,7 +14,7 @@ class Ingredents extends React.Component {
     return (
       <ul>
         {
-          Object.keys(this.props.ingredents).map((item, index) => {
+          this.props.ingredents.map((item, index) => {
             return <li key={index}>
                 <input 
                   type="checkbox" 
