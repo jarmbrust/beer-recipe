@@ -9,7 +9,6 @@ class IngredentsSaveRecipe extends React.Component {
 
   handleSave = event => {
     event.preventDefault();
-    console.log('event.target[0].value', event.target[0].value)
     this.props.onChange(event.target[0].value);
   }
 

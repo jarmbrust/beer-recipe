@@ -35,9 +35,6 @@ class App extends Component {
   }
 
   handleCheckedBox(checkbox) {
-
-    console.log('checkbox', checkbox.checked, checkbox.value);
-
     let recipeCopy = {...this.state.recipes}
     if (checkbox.checked) {
       recipeCopy.newList.push(checkbox.value);
@@ -45,8 +42,6 @@ class App extends Component {
       recipeCopy.newList = recipeCopy.newList.filter(item => item !== checkbox.value)
     }
     this.setState({recipes: recipeCopy});
-
-    console.log('this.state', this.state);
   }
 
   handleSearchRecipes = value => {
@@ -65,20 +60,16 @@ class App extends Component {
 
   getSearchedRecipe = () => {
     if (!this.state.recipeSearch) { return ['']; }
-    console.log('this.state.recipeSearch', this.state.recipeSearch)
-    console.log('this.state', this.state, this.state.recipes[this.state.recipeSearch]);
     return this.state.recipes[this.state.recipeSearch];
   }
 
   saveRecipe = recipe => {
-    console.log('save', recipe);
     let stateCopy = {...this.state};
-    console.log('stateCopy.ingredients', stateCopy.ingredients);
-    console.log('stateCopy.recipes', stateCopy.recipes, stateCopy.recipes.newList);
-    const recipeObj = {[recipe]: stateCopy.recipes.newList};
+    // deep copy
+    const recipeObj = JSON.parse(JSON.stringify({[recipe]: stateCopy.recipes.newList}));
     const newRecipes = Object.assign(recipeObj, stateCopy.recipes);
     this.setState({recipes: newRecipes});
-  }
+    }
   
   render() {
     return (
@@ -96,7 +87,7 @@ class App extends Component {
           <SearchRecipes
             onChange={this.handleSearchRecipes}
           />
-         <IngredentsRecipe list={this.getSearchedRecipe()} />
+         <IngredentsRecipe list={this.getSearchedRecipe()} recipeName={this.state.recipeSearch}/>
          <IngredentsSaveRecipe onChange={this.saveRecipe} />
         </div>
       </div>

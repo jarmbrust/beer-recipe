@@ -1,8 +1,9 @@
 import React from 'react';
 
 const IngredentsRecipe = props => {
+  console.log('props', props);
   return (
-    <ul>
+    <ul><span className="recipe-title">{props.recipeName}</span>
       {
         props.list.map((item, index) => {
           return <li key={index}>{item}</li>

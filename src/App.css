@@ -30,3 +30,9 @@
 ul {
   list-style: none;
 }
+
+.recipe-title {
+  font-weight: bold;
+  padding: 10px;
+  /* text-decoration: underline; */
+}
