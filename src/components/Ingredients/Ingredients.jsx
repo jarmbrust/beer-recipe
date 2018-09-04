@@ -11,6 +11,7 @@ class Ingredients extends React.Component {
   }
 
   render() {
+    console.log('this.props', this.props);
     return (
       <ul>
         {

@@ -14,6 +14,7 @@ class SearchRecipes extends React.Component {
   }
 
   handleChange = event => {
+    console.log('event', event.target.value);
     this.props.onChange(event.target.value);
   }
 
@@ -22,7 +23,7 @@ class SearchRecipes extends React.Component {
       <form onSubmit={this.handleSearch}>
         <label>
           Name:
-          <input type="text" name="test" id="recipe-search-text" placeholder={this.props.text} onChange={this.handleChange} />
+          <input type="text" name="test" id="recipe-search-text" placeholder={this.props.text} onChange={this.handleChange}/>
         </label>
         <input type="submit" value="Submit" />
       </form>

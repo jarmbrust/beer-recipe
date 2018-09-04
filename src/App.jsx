@@ -19,6 +19,7 @@ class App extends Component {
         'Corn Syrup',
         'Iodine Solution'
       ],
+      ingredientSearch: '',
       recipes: {
         recipe1: ['Water', 'Hop Pellets', 'Yeast'],
         coolRecipe: ['Water', 'Extract', 'Yeast', 'Corn Syrup'],
@@ -46,16 +47,35 @@ class App extends Component {
   }
 
   handleSearchIngredients = value => {
+    console.log('value', value);
+    if (!value) {
+      return this.state.ingredients;
+    }
 
+    const result = this.getSearchIngredientsResults(this.state.ingredients, value);
+
+    console.log('result', result);
+    if (result) {
+      this.setState({ingredientSearch: [result]});
+    } else {
+      this.setState({ingredientSearch: ''});
+    }
+  }
+
+  getSearchIngredientsResults = (object, value) => {
+    return object.find(key => key === value);
+  }
+
+  getSearchedIngredient = () => {
+    if (!this.state.ingredientSearch) { return this.state.ingredients; }
+    return this.state.ingredientSearch;
   }
 
   handleSearchRecipes = value => {
     const result = this.getSearchResults(this.state.recipes, value);
 
     if (result) {
-      let recipeCopy = {...this.state.recipeSearch}
-      recipeCopy = result;
-      this.setState({recipeSearch: recipeCopy});
+      this.setState({recipeSearch: result});
     }
   }
 
@@ -88,7 +108,7 @@ class App extends Component {
             onChange={this.handleSearchIngredients}
           />
           <Ingredients 
-            ingredients={this.state.ingredients}
+            ingredients={this.getSearchedIngredient()}
             onChecked={this.handleCheckedBox}
           />
         </div>
