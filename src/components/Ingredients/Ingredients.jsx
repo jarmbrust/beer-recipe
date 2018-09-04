@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Ingredents extends React.Component {
+class Ingredients extends React.Component {
   constructor(props) {
     super(props);
     this.handleChecked = this.handleChecked.bind(this);
@@ -14,7 +14,7 @@ class Ingredents extends React.Component {
     return (
       <ul>
         {
-          this.props.ingredents.map((item, index) => {
+          this.props.ingredients.map((item, index) => {
             return <li key={index}>
                 <input 
                   type="checkbox" 
@@ -31,4 +31,4 @@ class Ingredents extends React.Component {
   }
 }
 
-export default Ingredents;
+export default Ingredients;

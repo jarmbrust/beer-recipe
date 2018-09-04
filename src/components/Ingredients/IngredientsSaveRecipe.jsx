@@ -1,6 +1,6 @@
 import React from 'react';
 
-class IngredentsSaveRecipe extends React.Component {
+class IngredientsSaveRecipe extends React.Component {
   constructor(props) {
     super(props);
     
@@ -25,4 +25,4 @@ class IngredentsSaveRecipe extends React.Component {
   }
 }
 
-export default IngredentsSaveRecipe;
+export default IngredientsSaveRecipe;

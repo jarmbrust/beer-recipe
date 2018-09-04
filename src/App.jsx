@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import Ingredents from './components/Ingredents/Ingredents';
-import IngredentsRecipe from './components/Ingredents/IngredentsRecipe';
+import Ingredients from './components/Ingredients/Ingredients';
+import IngredientsRecipe from './components/Ingredients/IngredientsRecipe';
 import SearchRecipes from './components/Search/SearchRecipes';
-import IngredentsSaveRecipe from './components/Ingredents/IngredentsSaveRecipe';
+import IngredientsSaveRecipe from './components/Ingredients/IngredientsSaveRecipe';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      ingredents: [
+      ingredients: [
         'Water',
         'Hop Pellets',
         'Barley',
@@ -28,6 +28,7 @@ class App extends Component {
     };
 
     this.handleCheckedBox = this.handleCheckedBox.bind(this);
+    this.handleSearchIngredients = this.handleSearchIngredients.bind(this);
     this.handleSearchRecipes = this.handleSearchRecipes.bind(this);
     this.getSearchResults = this.getSearchResults.bind(this);
     this.getSearchedRecipe = this.getSearchedRecipe.bind(this);
@@ -42,6 +43,10 @@ class App extends Component {
       recipeCopy.newList = recipeCopy.newList.filter(item => item !== checkbox.value)
     }
     this.setState({recipes: recipeCopy});
+  }
+
+  handleSearchIngredients = value => {
+
   }
 
   handleSearchRecipes = value => {
@@ -77,18 +82,26 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Beer Recipe Organizer</h1>
         </header>
-        <div className="ingredents-list">
-          <Ingredents 
-            ingredents={this.state.ingredents}
+        <div className="ingredients-list">
+          <SearchRecipes 
+            text="Find an Ingredient" 
+            onChange={this.handleSearchIngredients}
+          />
+          <Ingredients 
+            ingredients={this.state.ingredients}
             onChecked={this.handleCheckedBox}
           />
         </div>
         <div>
-          <SearchRecipes
+          <SearchRecipes 
+            text="Find a Recipe"
             onChange={this.handleSearchRecipes}
           />
-         <IngredentsRecipe list={this.getSearchedRecipe()} recipeName={this.state.recipeSearch}/>
-         <IngredentsSaveRecipe onChange={this.saveRecipe} />
+          <IngredientsRecipe 
+            list={this.getSearchedRecipe()}
+            recipeName={this.state.recipeSearch}
+          />
+          <IngredientsSaveRecipe onChange={this.saveRecipe} />
         </div>
       </div>
     );

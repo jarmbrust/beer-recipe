@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IngredentsRecipe = props => {
+const IngredientsRecipe = props => {
   return (
     <ul><span className="recipe-title">{props.recipeName}</span>
       {
@@ -12,4 +12,4 @@ const IngredentsRecipe = props => {
   );
 }
 
-export default IngredentsRecipe;
+export default IngredientsRecipe;
