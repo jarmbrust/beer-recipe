@@ -77,7 +77,7 @@ class App extends Component {
     console.log('stateCopy.recipes', stateCopy.recipes, stateCopy.recipes.newList);
     const recipeObj = {[recipe]: stateCopy.recipes.newList};
     const newRecipes = Object.assign(recipeObj, stateCopy.recipes);
-    this.setState({['recipes']: newRecipes});
+    this.setState({recipes: newRecipes});
   }
   
   render() {
