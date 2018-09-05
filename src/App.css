@@ -2,13 +2,15 @@
   text-align: center;
 }
 
-.App-body {
-  margin: 20px 10%;
+.App-beer-img {
+  position: relative;
+  float: left;
+  width: 200px;
+  margin: 10px 20px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App-body {
+  margin: 20px 10%;
 }
 
 .App-header {
@@ -16,18 +18,6 @@
   height: 70px;
   padding: 20px;
   color: black;
-}
-
-.App-searched-ingredients-list {
-  padding: 3px;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
 }
 
 .App-ingredients-list {
@@ -44,16 +34,34 @@
   float: left;
 }
 
-.App-beer-img {
-  position: relative;
-  float: left;
-  width: 200px;
-  margin: 10px 20px;
+.App-searched-ingredients-list {
+  padding: 3px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.Ingredients-checkbox-label:hover {
+  background-color: #f5f5f5;
+}
+
+.Ingredients-table {
+  padding: 3px;
+  width: 100%;
 }
 
 .IngredientsRecipe-title {
    font-weight: bold;
    margin: 5px;
+}
+
+.IngredientsSaveRecipe-text,
+.SearchRecipes-submit,
+.SearchRecipes-text {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
 }
 
 ul {
@@ -65,20 +73,3 @@ li {
   margin: 5px;
 }
 
-.IngredientsSaveRecipe-text,
-.SearchRecipes-submit,
-.SearchRecipes-text {
-  padding: 5px;
-  margin: 5px;
-  border-radius: 10px;
-}
-
-.Ingredients-checkbox-label:hover {
-  background-color: #f5f5f5;
-}
-
-.Ingredients-table {
-  padding: 3px;
-  /* margin: 5px 15px; */
-  width: 100%;
-}

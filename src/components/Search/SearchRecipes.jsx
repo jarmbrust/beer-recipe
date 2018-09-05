@@ -14,7 +14,6 @@ class SearchRecipes extends React.Component {
   }
 
   handleChange = event => {
-    console.log('event', event.target.value);
     this.props.onChange(event.target.value);
   }
 

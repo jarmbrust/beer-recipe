@@ -12,31 +12,52 @@ class App extends Component {
 
     this.state = {
       ingredients: [
-        'Water',
-        'Hops',
+        'Apple Juice',
         'Barley',
-        'Extract',
-        'Yeast',
+        'Common Spices',
         'Corn Syrup',
-        'Iodine Solution',
+        'Extract',
         'Honey',
-        'Apple Juice'
+        'Hops',
+        'Iodine Solution',
+        'Love',
+        'Uncommon Spices',
+        'Water',
+        'Yeast'
       ],
       ingredientSearch: '',
       recipes: {
-        recipe1: ['Water', 'Hop Pellets', 'Yeast'],
+        recipe1: ['Water', 'Hops', 'Yeast'],
         coolRecipe: ['Water', 'Extract', 'Yeast', 'Corn Syrup'],
         newList:[]
       },
       recipeSearch: ''
     };
 
+    this.getSearchedRecipe = this.getSearchedRecipe.bind(this);
+    this.getSearchResults = this.getSearchResults.bind(this);
     this.handleCheckedBox = this.handleCheckedBox.bind(this);
     this.handleSearchIngredients = this.handleSearchIngredients.bind(this);
     this.handleSearchRecipes = this.handleSearchRecipes.bind(this);
-    this.getSearchResults = this.getSearchResults.bind(this);
-    this.getSearchedRecipe = this.getSearchedRecipe.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
+  }
+
+  getSearchedRecipe = () => {
+    if (!this.state.recipeSearch) { return ['']; }
+    return this.state.recipes[this.state.recipeSearch];
+  }
+
+  getSearchedIngredient = () => {
+    if (!this.state.ingredientSearch) { return this.state.ingredients; }
+    return this.state.ingredientSearch;
+  }
+
+  getSearchIngredientsResults = (object, value) => {
+    return object.find(key => key.toLowerCase() === value.toLowerCase());
+  }
+
+  getSearchResults = (object, value) => {
+    return Object.keys(object).find(key => key === value);
   }
 
   handleCheckedBox(checkbox) {
@@ -50,7 +71,6 @@ class App extends Component {
   }
 
   handleSearchIngredients = value => {
-    console.log('value', value);
     if (!value) {
       return this.state.ingredients;
     }
@@ -65,30 +85,12 @@ class App extends Component {
     }
   }
 
-  getSearchIngredientsResults = (object, value) => {
-    return object.find(key => key.toLowerCase() === value.toLowerCase());
-  }
-
-  getSearchedIngredient = () => {
-    if (!this.state.ingredientSearch) { return this.state.ingredients; }
-    return this.state.ingredientSearch;
-  }
-
   handleSearchRecipes = value => {
     const result = this.getSearchResults(this.state.recipes, value);
 
     if (result) {
       this.setState({recipeSearch: result});
     }
-  }
-
-  getSearchResults = (object, value) => {
-    return Object.keys(object).find(key => key === value);
-  }
-
-  getSearchedRecipe = () => {
-    if (!this.state.recipeSearch) { return ['']; }
-    return this.state.recipes[this.state.recipeSearch];
   }
 
   saveRecipe = recipe => {

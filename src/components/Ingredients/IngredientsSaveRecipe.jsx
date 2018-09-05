@@ -16,9 +16,18 @@ class IngredientsSaveRecipe extends React.Component {
     return (
       <form onSubmit={this.handleSave}>
         <label aria-label="save recipe field">
-          <input type="text" name="test" className="IngredientsSaveRecipe-text" placeholder="Save Recipe" />
+          <input 
+            type="text" 
+            name="test" 
+            className="IngredientsSaveRecipe-text" 
+            placeholder="Save Recipe"
+          />
         </label>
-        <input className="IngredientsSaveRecipe-text" type="submit" value="Save" />
+        <input 
+          className="IngredientsSaveRecipe-text"
+          type="submit"
+          value="Save"
+        />
       </form>
     );
   }
