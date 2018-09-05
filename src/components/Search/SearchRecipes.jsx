@@ -21,11 +21,20 @@ class SearchRecipes extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSearch}>
-        <label>
-          Name:
-          <input type="text" name="test" id="recipe-search-text" placeholder={this.props.text} onChange={this.handleChange}/>
+        <label aria-label="search field">
+          <input 
+            type="text" 
+            name="test" 
+            className="SearchRecipes-text" 
+            placeholder={this.props.text} 
+            onChange={this.handleChange}
+          />
         </label>
-        <input type="submit" value="Submit" />
+        <input 
+          className="SearchRecipes-submit" 
+          type="submit" 
+          value="Search"
+        />
       </form>
     );
   }

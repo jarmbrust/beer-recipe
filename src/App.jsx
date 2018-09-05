@@ -4,6 +4,7 @@ import Ingredients from './components/Ingredients/Ingredients';
 import IngredientsRecipe from './components/Ingredients/IngredientsRecipe';
 import SearchRecipes from './components/Search/SearchRecipes';
 import IngredientsSaveRecipe from './components/Ingredients/IngredientsSaveRecipe';
+import beerImg from '../src/assets/beer1.jpg';
 
 class App extends Component {
   constructor(props) {
@@ -12,12 +13,14 @@ class App extends Component {
     this.state = {
       ingredients: [
         'Water',
-        'Hop Pellets',
+        'Hops',
         'Barley',
         'Extract',
         'Yeast',
         'Corn Syrup',
-        'Iodine Solution'
+        'Iodine Solution',
+        'Honey',
+        'Apple Juice'
       ],
       ingredientSearch: '',
       recipes: {
@@ -63,7 +66,7 @@ class App extends Component {
   }
 
   getSearchIngredientsResults = (object, value) => {
-    return object.find(key => key === value);
+    return object.find(key => key.toLowerCase() === value.toLowerCase());
   }
 
   getSearchedIngredient = () => {
@@ -102,26 +105,31 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Beer Recipe Organizer</h1>
         </header>
-        <div className="ingredients-list">
-          <SearchRecipes 
-            text="Find an Ingredient" 
-            onChange={this.handleSearchIngredients}
-          />
-          <Ingredients 
-            ingredients={this.getSearchedIngredient()}
-            onChecked={this.handleCheckedBox}
-          />
-        </div>
-        <div>
-          <SearchRecipes 
-            text="Find a Recipe"
-            onChange={this.handleSearchRecipes}
-          />
-          <IngredientsRecipe 
-            list={this.getSearchedRecipe()}
-            recipeName={this.state.recipeSearch}
-          />
-          <IngredientsSaveRecipe onChange={this.saveRecipe} />
+        <div className="App-body">
+          <div className="App-ingredients-list">
+            <SearchRecipes 
+              text="Find an Ingredient" 
+              onChange={this.handleSearchIngredients}
+            />
+            <Ingredients 
+              ingredients={this.getSearchedIngredient()}
+              onChecked={this.handleCheckedBox}
+            />
+          </div>
+          <div className="App-recipes">
+            <SearchRecipes 
+              text="Find a Recipe"
+              onChange={this.handleSearchRecipes}
+            />
+            <IngredientsRecipe 
+              className="App-searched-ingredients-list"
+              list={this.getSearchedRecipe()}
+              recipeName={this.state.recipeSearch}
+            />
+            <IngredientsSaveRecipe onChange={this.saveRecipe} />
+          </div>
+          <img className="App-beer-img" src={beerImg} alt="Mug of beer">
+          </img>
         </div>
       </div>
     );

@@ -13,21 +13,28 @@ class Ingredients extends React.Component {
   render() {
     console.log('this.props', this.props);
     return (
-      <ul>
+      <table className="Ingredients-table">
+        <tbody>
         {
           this.props.ingredients.map((item, index) => {
-            return <li key={index}>
+            return <tr key={index}>
+              <td className="Ingredients-checkbox">
                 <input 
+                  key={index}
                   type="checkbox" 
                   name={item} 
                   id={item} 
                   value={item} 
                   onChange={this.handleChecked}/>
+              </td>
+              <td className="Ingredients-checkbox-label">
                 <label htmlFor={item}>{item}</label>
-              </li>
+              </td>
+            </tr>
           })
         }
-      </ul>
+        </tbody>
+      </table>
     );
   }
 }
