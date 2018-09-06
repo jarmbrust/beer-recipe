@@ -16,6 +16,10 @@ class Ingredients extends React.Component {
         <tbody>
         {
            Object.keys(this.props.ingredients).map((item, index) => {
+            let checked = '';
+            if (this.props.ingredients[item]) {
+              checked = 'checked';
+            }
             return <tr key={index}>
               <td className="Ingredients-checkbox">
                 <input 
@@ -23,7 +27,8 @@ class Ingredients extends React.Component {
                   type="checkbox" 
                   name={item} 
                   id={item} 
-                  value={item} 
+                  value={item}
+                  checked={checked}
                   onChange={this.handleChecked}/>
               </td>
               <td className="Ingredients-checkbox-label">

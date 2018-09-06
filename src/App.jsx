@@ -21,15 +21,15 @@ class App extends Component {
         'Hops': false,
         'Iodine Solution': false,
         'Love': false,
+        'Malt': false,
         'Uncommon Spices': false,
         'Water': false,
         'Yeast': false
       },
       ingredientSearch: '',
       recipes: {
-        recipe1: ['Water', 'Hops', 'Yeast'],
-        coolRecipe: ['Water', 'Extract', 'Yeast', 'Corn Syrup'],
-        newList:[]
+        testRecipe1: ['Water', 'Hops', 'Yeast'],
+        coolRecipe1: ['Water', 'Extract', 'Yeast', 'Corn Syrup']
       },
       recipeSearch: ''
     };
@@ -53,7 +53,9 @@ class App extends Component {
   }
 
   getSearchIngredientsResults = (object, value) => {
-    return object.find(key => key.toLowerCase() === value.toLowerCase());
+    console.log('getSearchIngredientsResults', object, value);
+    if (!value) {return ''}
+    return Object.keys(object).find(key => key.toLowerCase() === value.toLowerCase());
   }
 
   getSearchResults = (object, value) => {
@@ -61,9 +63,10 @@ class App extends Component {
   }
 
   handleCheckedBox(checkbox) {
-    let recipeCopy = {...this.state.ingredients}
-    recipeCopy[checkbox.value] = !recipeCopy[checkbox.value];
-    this.setState({ingredients: recipeCopy});
+    const ingredients = {...this.state.ingredients}
+    const value = checkbox.value;
+    const ingredientsSet =  {...ingredients, [value]: checkbox.checked};
+    this.setState({ingredients: ingredientsSet});
   }
 
   handleSearchIngredients = value => {
@@ -74,7 +77,7 @@ class App extends Component {
     const result = this.getSearchIngredientsResults(this.state.ingredients, value);
 
     if (result) {
-      this.setState({ingredientSearch: [result]});
+      this.setState({ingredientSearch: {[result]: false}});
     } else {
       this.setState({ingredientSearch: ''});
     }
