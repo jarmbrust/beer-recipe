@@ -39,7 +39,7 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 22px;
 }
 
 .Ingredients-checkbox-label:hover {
@@ -61,7 +61,7 @@
 .SearchRecipes-text {
   padding: 5px;
   margin: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 ul {
@@ -73,3 +73,11 @@ li {
   margin: 5px;
 }
 
+table td.Ingredients-checkbox-label {
+  text-align: left;
+  padding: 4px 5px;
+}
+
+table td.Ingredients-checkbox {
+  text-align: right;
+}
