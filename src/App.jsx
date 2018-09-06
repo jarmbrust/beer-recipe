@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Ingredients from './components/Ingredients/Ingredients';
 import IngredientsRecipe from './components/Ingredients/IngredientsRecipe';
-import SearchRecipes from './components/Search/SearchRecipes';
+import Search from './components/Search/Search';
 import IngredientsSaveRecipe from './components/Ingredients/IngredientsSaveRecipe';
 import beerImg from '../src/assets/beer1.jpg';
 
@@ -53,8 +53,7 @@ class App extends Component {
   }
 
   getSearchIngredientsResults = (object, value) => {
-    console.log('getSearchIngredientsResults', object, value);
-    if (!value) {return ''}
+    if (!value) { return ''; }
     return Object.keys(object).find(key => key.toLowerCase() === value.toLowerCase());
   }
 
@@ -113,7 +112,7 @@ class App extends Component {
         </header>
         <div className="App-body">
           <div className="App-ingredients-list">
-            <SearchRecipes 
+            <Search
               text="Find an Ingredient" 
               onChange={this.handleSearchIngredients}
             />
@@ -123,7 +122,7 @@ class App extends Component {
             />
           </div>
           <div className="App-recipes">
-            <SearchRecipes 
+            <Search
               text="Find a Recipe"
               onChange={this.handleSearchRecipes}
             />
