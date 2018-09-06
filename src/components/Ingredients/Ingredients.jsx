@@ -15,7 +15,7 @@ class Ingredients extends React.Component {
       <table className="Ingredients-table">
         <tbody>
         {
-          this.props.ingredients.map((item, index) => {
+           Object.keys(this.props.ingredients).map((item, index) => {
             return <tr key={index}>
               <td className="Ingredients-checkbox">
                 <input 

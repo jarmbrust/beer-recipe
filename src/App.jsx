@@ -11,20 +11,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      ingredients: [
-        'Apple Juice',
-        'Barley',
-        'Common Spices',
-        'Corn Syrup',
-        'Extract',
-        'Honey',
-        'Hops',
-        'Iodine Solution',
-        'Love',
-        'Uncommon Spices',
-        'Water',
-        'Yeast'
-      ],
+      ingredients: {
+        'Apple Juice': false,
+        'Barley': false ,
+        'Common Spices': false,
+        'Corn Syrup': false,
+        'Extract': false,
+        'Honey': false,
+        'Hops': false,
+        'Iodine Solution': false,
+        'Love': false,
+        'Uncommon Spices': false,
+        'Water': false,
+        'Yeast': false
+      },
       ingredientSearch: '',
       recipes: {
         recipe1: ['Water', 'Hops', 'Yeast'],
@@ -61,13 +61,9 @@ class App extends Component {
   }
 
   handleCheckedBox(checkbox) {
-    let recipeCopy = {...this.state.recipes}
-    if (checkbox.checked) {
-      recipeCopy.newList.push(checkbox.value);
-    } else {
-      recipeCopy.newList = recipeCopy.newList.filter(item => item !== checkbox.value)
-    }
-    this.setState({recipes: recipeCopy});
+    let recipeCopy = {...this.state.ingredients}
+    recipeCopy[checkbox.value] = !recipeCopy[checkbox.value];
+    this.setState({ingredients: recipeCopy});
   }
 
   handleSearchIngredients = value => {
@@ -77,7 +73,6 @@ class App extends Component {
 
     const result = this.getSearchIngredientsResults(this.state.ingredients, value);
 
-    console.log('result', result);
     if (result) {
       this.setState({ingredientSearch: [result]});
     } else {
@@ -95,12 +90,18 @@ class App extends Component {
 
   saveRecipe = recipe => {
     let stateCopy = {...this.state};
-    // deep copy
-    const recipeObj = JSON.parse(JSON.stringify({[recipe]: stateCopy.recipes.newList}));
+    const newRecipe = [];
+    Object.keys(stateCopy.ingredients).forEach(key => {
+      if (stateCopy.ingredients[key]) {
+        newRecipe.push(key);
+      }
+    });
+
+    const recipeObj = JSON.parse(JSON.stringify({[recipe]: newRecipe}));
     const newRecipes = Object.assign(recipeObj, stateCopy.recipes);
     this.setState({recipes: newRecipes});
-    }
-  
+  }
+
   render() {
     return (
       <div className="App">
