@@ -1,4 +1,4 @@
-# `HELLO SOVOS!!!`
+# `Beer Recipe App`
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -23,12 +23,3 @@ Also, the program could really use a "clear" button to clear all the checkboxes 
 
 Lastly while I believe it is best to have self-documentating code, this does need a little more explicit documentation.
 
-### `What needs to be done on the server-side`
-
-I would expect the server to have a small database for this app (or a few tables as part of a larger database).  It would have an Ingredients table that housed all the possibe ingredients for making beer with a unique `IngredientID` for each.  The Recipe table would likely have a unique `RecipeID`, and would have a row with each `IngredientID` that is in that recipe, the PK for that table would be the combination of those two fields.  Then either it would have both the recipe name and `UserID` of the person creating that recipe, or more likely, those two fields (recipe name and userID) would be pulled out to their own table and referenced to the previous one by the `RecipeID` (this would prevent the recipe name and user id from being duplicated in that table).  Finally there would be a user table with the unique `UserID` and any other relevent information (name, contact info, etc).
-
-Procedures for the above database would include one to return all ingredents, another to return all ingredents for a specific recipe name, another to save a recipe up to the database using the recipe name and assigning it an unique RecipeID.
-
-The C# server code would call the relevent procedures above and return the JSON formatted information down to the React app.  The React app would likely use something like Axios to communicate with the server.
-
-## `Thanks!`
